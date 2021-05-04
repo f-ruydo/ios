@@ -6,11 +6,30 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
+    
+    @AppStorage ("log_Status") var log_Status = false
+    
+    let uId = Auth.auth().currentUser!.uid
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        ZStack{
+            
+            if !log_Status {
+                
+                LoginView()
+                
+            }
+            else {
+
+                HomeView()
+              
+                
+            }
+        }
     }
 }
 
